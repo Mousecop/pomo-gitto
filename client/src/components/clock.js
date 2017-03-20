@@ -7,6 +7,7 @@ export default function Clock () {
         <div>
             <h1>this should show a clock</h1>
             <ReactCountdownClock seconds={60}
+                                 paused={false}
                          />
         </div>
     )
