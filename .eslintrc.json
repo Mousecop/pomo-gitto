@@ -12,25 +12,20 @@
         },
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "no-unused-vars": ["warn", { "vars": "local", "args": "none", "ignoreRestSiblings": false }],
+        "no-undef": 1,
         "linebreak-style": [
-            "error",
-            "unix"
+            0,
+            "windows"
         ],
         "quotes": [
             "error",
             "single"
         ],
         "semi": [
-            "error",
-            "always"
-        ]
+            0
+        ],
+        "no-extra-semi": 0
     }
 }

@@ -4,19 +4,23 @@ import './App.css';
 import Clock from './components/clock';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+      paused: true
+   }
+   this.handleOnClick = this.handleOnClick.bind(this);
+	}
+
+	handleOnClick() {
+    this.setState ({
+      paused: !this.state.paused
+    })
+    console.log('clicked ' + this.state.paused)
+}
 	render() {
 		return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <Clock />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-
-      </div>
+        <Clock onClick={this.handleOnClick} paused={this.state.paused}/>
     );
 	}
 }
