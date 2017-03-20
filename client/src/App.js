@@ -4,8 +4,8 @@ import './App.css';
 import Clock from './components/clock';
 
 class App extends Component {
-  render() {
-    return (
+	render() {
+		return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -18,7 +18,7 @@ class App extends Component {
 
       </div>
     );
-  }
+	}
 }
 
 export default App;
