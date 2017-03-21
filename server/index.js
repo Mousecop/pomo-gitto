@@ -28,7 +28,7 @@ app.use(passport.session());
 
 passport.use(new GitHubStrategy({
     clientID: 'c7b2c8e37d76f08dcb09',
-    clientSecret: 'df731f1c8dbcdcd5b3f4fc4cb31678f7d2db4a4e',
+    clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: 'http://localhost:8080/api/auth/github/callback'
     },
     (accessToken, refreshToken, profile, cb) => {
@@ -46,7 +46,7 @@ app.get('/api/auth/github/callback',
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
-    
+
   });
 
 
