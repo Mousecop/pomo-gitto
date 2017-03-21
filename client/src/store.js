@@ -8,5 +8,14 @@ State
     -when time ends. true or false
     -check if started, or ended.
 */
+import { createStore, applyMiddleware } from 'redux';
 
-// import reducers from './reducers/index';
+import reducers from './reducers/index';
+import thunk from 'redux-thunk';
+
+
+
+
+export default createStore(reducers, applyMiddleware(thunk));
+
+
