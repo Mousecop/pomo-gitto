@@ -18,36 +18,36 @@ export const fetchIssueList = () => dispatch => {
         return response.json();
     })
     .then(items => {
-        console.log(items);
+        return dispatch(fetchIssueListSuccess(items));
     })
 }
 
 
 
 
-export const clockEnd = () => {
+export const clockEnd = () => ({
     type: CLOCK_END
-}
+})
 
-export const clockStart = () => {
+export const clockStart = () => ({
     type: CLOCK_START
-}
+})
 
-export const fetchIssueListSuccess = (lists) => {
+export const fetchIssueListSuccess = (lists) => ({
     type: FETCH_ISSUE_LIST_SUCCESS,
     lists
-}
+})
 
-export const fetchIssueListError = (error) => {
+export const fetchIssueListError = (error) => ({
     type: FETCH_ISSUE_LIST_ERROR,
     error
-}
+})
 
-export const selectedIssue = (userInput) => {
+export const selectedIssue = (userInput) => ({
     type: SELECT_ISSUE,
     userInput
-}
+})
 
-export const disableIssue = () => {
+export const disableIssue = () => ({
     type: DISABLE_ISSUE
-}
+})
