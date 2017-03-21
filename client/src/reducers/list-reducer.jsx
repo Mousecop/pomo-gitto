@@ -9,7 +9,7 @@ const initalState = {
 }
 
 
-export const listReducer = (state=initalState, action) => {
+const listReducer = (state=initalState, action) => {
     switch(action.type) {
         case actions.SELECT_ISSUE:
             return{...state, issueSelected: true, disabled: false, userSelected: action.userInput}
@@ -21,3 +21,5 @@ export const listReducer = (state=initalState, action) => {
             return state;
     }
 }
+
+export default listReducer;

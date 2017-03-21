@@ -6,7 +6,7 @@ const initalState = {
 }
 
 
-export const clockReducer = (state=initalState, action) => {
+const clockReducer = (state=initalState, action) => {
     switch(action.type) {
         case actions.CLOCK_END: 
             return {...state, timeEnded: true};
@@ -16,3 +16,5 @@ export const clockReducer = (state=initalState, action) => {
             return state;
     }
 }
+
+export default clockReducer;
