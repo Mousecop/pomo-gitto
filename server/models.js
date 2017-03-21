@@ -3,8 +3,8 @@ const findOrCreate = require('mongoose-findorcreate')
 
 
 const userSchema = mongoose.Schema ({
-    githubId: Number
-
+    githubId: Number,
+    token: String
 })
 
 userSchema.plugin(findOrCreate);
