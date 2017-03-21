@@ -8,3 +8,5 @@ State
     -when time ends. true or false
     -check if started, or ended.
 */
+
+// import reducers from './reducers/index';
