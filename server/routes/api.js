@@ -5,7 +5,7 @@ const passportGithub = require('../auth/github');
 
 
 
-router.get('/api/auth/github', passportGithub.authenticate('github'));
+router.get('/api/auth/github', passportGithub.authenticate('github', {scope: ['repo', 'user']}));
 
 router.get('/api/auth/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/login' }),
