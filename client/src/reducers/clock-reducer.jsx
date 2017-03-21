@@ -1,4 +1,4 @@
-import * as actions from './actions/action';
+import * as actions from '../actions/action';
 
 const initalState = {
     timeEnded: false,
