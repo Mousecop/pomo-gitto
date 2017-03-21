@@ -1,12 +1,45 @@
+// *** main dependencies *** //
+
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const mongoose = require('mongoose');
+
+// *** app instance *** //
 
 const app = express();
 
+mongoose.Promise = global.Promise;
+
+// *** routes *** //
+
+const routes = require('./routes/api');
+
+const {callbackURL, clientID, clientSecret, databaseURL}= require('./config');
+console.log(callbackURL, clientID, clientSecret);
+
 // API endpoints go here!
 
+// *** middleware *** //
+
+app.use(bodyParser.json())
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// *** main routes *** //
+
+app.use('/', routes);
 
 // Serve the built client
+
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Unhandled requests which aren't for the API should serve index.html so
@@ -19,9 +52,17 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 let server;
 function runServer(port=3001) {
     return new Promise((resolve, reject) => {
-        server = app.listen(port, () => {
-            resolve();
-        }).on('error', reject);
+        mongoose.connect('mongodb://aarongo:pass1234@ds137760.mlab.com:37760/pomo-gitto', err => {
+
+            if (err) {
+
+                return(err);
+            }
+            server = app.listen(port, () => {
+                resolve();
+            }).on('error', reject);
+        })
+
     });
 }
 
