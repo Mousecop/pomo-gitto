@@ -18,8 +18,6 @@ mongoose.Promise = global.Promise;
 
 const routes = require('./routes/api');
 
-const {callbackURL, clientID, clientSecret, databaseURL}= require('./config');
-console.log(callbackURL, clientID, clientSecret);
 
 // API endpoints go here!
 
