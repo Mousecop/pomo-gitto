@@ -14,7 +14,7 @@ class App extends Component {
 
 	handleOnClick() {
     this.setState ({
-      paused: !this.state.paused
+      paused: false
     })
     console.log('clicked ' + this.state.paused)
 }
