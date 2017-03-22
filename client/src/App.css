@@ -1,29 +1,22 @@
-/*.App {
-  text-align: center;
-}*/
+* {
+  box-sizing: border-box;
+}
 
-.clock:nth-child(3)[style] {
- text-align: center;
+.start {
+  margin-top: 36px;
+  
+}
+
+.header {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.App {
+  text-align: center;
+}
+
+/*targeting the second canvas element that comes with react-countdown-clock*/
+canvas:nth-of-type(2) {
   position: relative !important;
 }
-
-/*.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-git 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/

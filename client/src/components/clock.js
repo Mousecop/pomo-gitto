@@ -7,15 +7,17 @@ import { toggleTime } from '../actions/action';
 export function Clock (props) {
 	return (
         <div className="App">
-            <h1>PomoGitto</h1>
-			<button type="button" onClick={props.toggleTimeRunning}>Start</button>
+            <p className="header">PomoGitto</p>
+			
 			<div className="clock">
 				<ReactCountdownClock seconds={1500}
-				size={400}
+				size={375}
 				weight={10}
-				paused={!props.isTimeRunning}/>
+				paused={!props.isTimeRunning}
+				pausedText={'Click Start'}
+				/>
 			</div>
-			
+			<button type="button" onClick={props.toggleTimeRunning} className="start">Start</button>
         </div>
     );
 }
