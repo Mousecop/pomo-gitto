@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ReactCountdownClock from 'react-countdown-clock';
 import { toggleTime } from '../actions/action';
 
-import './clock.css';
+import '../clock.css';
 
 export const Clock = (props) => {
 	return (
