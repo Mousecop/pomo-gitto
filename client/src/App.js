@@ -10,9 +10,9 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      paused: true
-   }
-   this.handleOnClick = this.handleOnClick.bind(this);
+      		paused: true
+   		}
+   		this.handleOnClick = this.handleOnClick.bind(this);
 	}
 
 	handleOnClick() {
@@ -27,7 +27,7 @@ class App extends Component {
 				<IssueList onClick={this.handleOnClick}/>
 			</div>
 
-    );
+    	);
 	}
 }
 

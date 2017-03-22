@@ -19,9 +19,7 @@ export class IssueList extends React.Component {
                         Issue Title: {issue.title}
                         <p>Repo: {issue.repository.full_name}</p>
                         <a href={issue.html_url} target="_blank">Issue on Github</a>
-                        { hidden = this.props.selected.title === issue.title ? '' : 'hidden'}
-                        <button className={`button ${hidden}`}type="button" onClick={this.props.onClick}>Start The Clock</button>
-
+                        <button className={`button ${hidden = this.props.selected.title === issue.title ? '' : 'hidden'}`}type="button" onClick={this.props.onClick}>Start The Clock</button>
                     </div>
         })
         return (
