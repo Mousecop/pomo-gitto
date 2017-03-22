@@ -1,17 +1,14 @@
 import * as actions from '../actions/action';
 
 const initalState = {
-    timeEnded: false,
-    clockStarted: false
-}
+    isTimeRunning: false 
+};
 
 
 const clockReducer = (state=initalState, action) => {
     switch(action.type) {
-        case actions.CLOCK_END: 
-            return {...state, timeEnded: true};
-        case actions.CLOCK_START: 
-            return {...state, clockStarted: true};
+        case actions.TOGGLE_TIME:
+            return {isTimeRunning: !state.isTimeRunning};
         default:
             return state;
     }
