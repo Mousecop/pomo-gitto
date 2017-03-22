@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/action';
 import '../list.css';
+import '../imports/materialize-css/dist/css/materialize.css';
 
 
 export class IssueList extends React.Component {
@@ -15,7 +16,7 @@ export class IssueList extends React.Component {
     render() {
         let hidden;
         const issues = this.props.issues.map((issue, i) => {
-            return <div className="issue-box" key={i}>
+            return <div className="issue-box card" key={i}>
                         <input name="selected-issue" type="radio" value={issue.id} onClick={() => this.props.selectIssue(issue)}/>
                         Issue Title: {issue.title}
                         <p>Repo: {issue.repository.full_name}</p>
