@@ -6,7 +6,7 @@ const initalState = {
     issues: [],
     disabled: true,
     userSelected: ''
-}
+};
 
 
 const listReducer = (state=initalState, action) => {
