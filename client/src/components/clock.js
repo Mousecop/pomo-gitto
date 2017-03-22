@@ -1,25 +1,32 @@
 import React from 'react';
-import * as actions from '../actions/action'
 import { connect } from 'react-redux';
-
 import ReactCountdownClock from 'react-countdown-clock';
 import { toggleTime } from '../actions/action';
 
 import '../clock.css';
 
-export const Clock = (props) => {
-	return (
-        <div className="clockContainer">
-			<div className="clock">
-				<ReactCountdownClock seconds={1500}
-				size={375}
-				weight={10}
-				paused={!props.isTimeRunning}
-				pausedText={'Click Start'}
-				/>
+export class Clock extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			time: 1500
+		}
+	}
+	render(){
+		return (
+			<div className="clockContainer">
+				<div className="clock">
+					<ReactCountdownClock seconds={this.state.time}
+					color={'#7986cb'}
+					size={375}
+					weight={15}
+					paused={!this.props.isTimeRunning}
+					pausedText={'Click Start'}
+					/>
+				</div>
 			</div>
-        </div>
-    );
+    	);
+	}
 }
 
 
