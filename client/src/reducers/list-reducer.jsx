@@ -7,7 +7,7 @@ const initalState = {
     disabled: true,
     userSelected: '',
     pommoHistory: []
-}
+};
 
 
 const listReducer = (state=initalState, action) => {
