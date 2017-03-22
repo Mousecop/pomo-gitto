@@ -1,8 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/action'
 
 import ReactCountdownClock from 'react-countdown-clock';
 
-export default function Clock (props) {
+export function Clock (props) {
 	// let pause = true;
 	// function togglePause() {
 	// 	pause ? pause = false : pause=true;
@@ -11,15 +13,16 @@ export default function Clock (props) {
 	return (
         <div className="App">
             <h1>PomoGitto</h1>
-			<button type="button" onClick={props.onClick}>Start</button>
 			<div className="clock">
-				<ReactCountdownClock seconds={1500}
+				<ReactCountdownClock seconds={4}
 				size={400}
 				weight={10}
 				paused={props.paused}
-				onClick={props.onClick}/>
+				onClick={props.onClick}
+			    onComplete={() => props.dispatch(actions.pommoHistory())}/>
 			</div>
-			
+
         </div>
     );
 }
+export default connect ()(Clock);

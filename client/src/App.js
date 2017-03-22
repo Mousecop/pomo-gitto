@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Clock from './components/clock';
+import {connect} from 'react-redux';
+import * as actions from './actions/action';
+import IssueList from './components/issue-list';
 
 class App extends Component {
 	constructor(props) {
@@ -16,11 +19,14 @@ class App extends Component {
     this.setState ({
       paused: false
     })
-    console.log('clicked ' + this.state.paused)
 }
 	render() {
 		return (
-        <Clock onClick={this.handleOnClick} paused={this.state.paused}/>
+        	<div>
+				<Clock  paused={this.state.paused}/>
+				<IssueList onClick={this.handleOnClick}/>
+			</div>
+
     );
 	}
 }

@@ -5,7 +5,8 @@ const initalState = {
     issueSelected: false,
     issues: [],
     disabled: true,
-    userSelected: ''
+    userSelected: '',
+    pommoHistory: []
 }
 
 
@@ -17,6 +18,8 @@ const listReducer = (state=initalState, action) => {
             return {...state, disabled: !state.disabled};
         case actions.FETCH_ISSUE_LIST_SUCCESS:
             return {...state, issues: action.lists}
+        case actions.POMMO_HISTORY:
+            return {...state, pommoHistory: [...state.pommoHistory, state.userSelected]}
         default:
             return state;
     }

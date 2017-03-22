@@ -13,7 +13,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-store.dispatch(actions.fetchIssueList());
-console.log(store.getState());
-

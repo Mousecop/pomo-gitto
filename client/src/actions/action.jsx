@@ -4,6 +4,8 @@ export const FETCH_ISSUE_LIST_SUCCESS = 'FETCH_ISSUE_LIST_SUCCESS';
 export const FETCH_ISSUE_LIST_ERROR = 'FETCH_ISSUE_LIST_ERROR';
 export const SELECT_ISSUE = 'SELECT_ISSUE';
 export const DISABLE_ISSUE = 'DISABLE_ISSUE';
+export const POMMO_HISTORY = 'POMMO_HISTORY';
+
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -50,4 +52,8 @@ export const selectedIssue = (userInput) => ({
 
 export const disableIssue = () => ({
     type: DISABLE_ISSUE
+})
+
+export const pommoHistory = () => ({
+    type: POMMO_HISTORY
 })
