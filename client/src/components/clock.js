@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import ReactCountdownClock from 'react-countdown-clock';
 import { toggleTime } from '../actions/action';
 
+import './clock.css';
+
 export const Clock = (props) => {
 	return (
-        <div className="App">
-            <p className="header">PomoGitto</p>
-
+        <div className="clockContainer">
 			<div className="clock">
 				<ReactCountdownClock seconds={1500}
 				size={375}
@@ -18,7 +18,6 @@ export const Clock = (props) => {
 				pausedText={'Click Start'}
 				/>
 			</div>
-			<button type="button" onClick={props.toggleTimeRunning} className="start">Start</button>
         </div>
     );
 }
