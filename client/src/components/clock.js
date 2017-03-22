@@ -14,7 +14,7 @@ export function Clock (props) {
         <div className="App">
             <h1>PomoGitto</h1>
 			<div className="clock">
-				<ReactCountdownClock seconds={4}
+				<ReactCountdownClock seconds={1500}
 				size={400}
 				weight={10}
 				paused={props.paused}
