@@ -8,18 +8,18 @@ export class IssueList extends React.Component {
         super(props)
     };
     componentDidMount() {
-        this.props.dispatch(actions.fetchIssueList());
+        this.props.fetchIssues();
     }
 
     render() {
         let hidden;
         const issues = this.props.issues.map((issue, i) => {
             return <div className="issue-box" key={i}>
-                        <input name="selected-issue" type="radio" value={issue.id} onClick={() =>         this.props.dispatch(actions.selectedIssue(issue))}/>
+                        <input name="selected-issue" type="radio" value={issue.id} onClick={() => this.props.selectIssue(issue)}/>
                         Issue Title: {issue.title}
                         <p>Repo: {issue.repository.full_name}</p>
                         <a href={issue.html_url} target="_blank">Issue on Github</a>
-                        <button className={`button ${hidden = this.props.selected.title === issue.title ? '' : 'hidden'}`}type="button" onClick={this.props.onClick}>Start The Clock</button>
+                        <button className={`button ${hidden = this.props.selected.title === issue.title ? '' : 'hidden'}`}type="button" onClick={this.props.toggleTimeRunning}>Start The Clock</button>
                     </div>
         })
         return (
@@ -37,5 +37,16 @@ const mapStateToProps = (state, props) => ({
     issues: state.List.issues,
     selected: state.List.userSelected
 });
+const mapDispatchToProps = (dispatch) => ({
+	toggleTimeRunning() {
+		dispatch(actions.toggleTime())
+	},
+    selectIssue(issue) {
+        dispatch(actions.selectedIssue(issue));
+    },
+    fetchIssues() {
+        dispatch(actions.fetchIssueList());
+    }
+})
 
-export default connect(mapStateToProps)(IssueList);
+export default connect(mapStateToProps, mapDispatchToProps)(IssueList);

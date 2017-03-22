@@ -5,8 +5,6 @@ export const FETCH_ISSUE_LIST_ERROR = 'FETCH_ISSUE_LIST_ERROR';
 export const SELECT_ISSUE = 'SELECT_ISSUE';
 export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
-
-=======
 export const TOGGLE_TIME = 'TOGGLE_TIME';
 import Cookie from 'react-cookie';
 

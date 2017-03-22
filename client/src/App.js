@@ -9,7 +9,10 @@ import IssueList from './components/issue-list';
 class App extends Component {
 	render() {
         return (
-        <Clock />
+        <div>
+            <Clock />
+            <IssueList />
+        </div>
         );
 	}
 }
