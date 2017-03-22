@@ -6,6 +6,7 @@ export const SELECT_ISSUE = 'SELECT_ISSUE';
 export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
 export const TOGGLE_TIME = 'TOGGLE_TIME';
+export const RESET_CLOCK = 'RESET_CLOCK';
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -29,6 +30,10 @@ export const fetchIssueList = () => dispatch => {
 
 export const toggleTime = () => ({
     type: TOGGLE_TIME
+})
+
+export const resetClock = () => ({
+    type: RESET_CLOCK
 })
 
 export const fetchIssueListSuccess = (lists) => ({

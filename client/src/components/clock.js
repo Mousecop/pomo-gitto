@@ -1,42 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactCountdownClock from 'react-countdown-clock';
-import { toggleTime } from '../actions/action';
-
+import { toggleTime, resetClock } from '../actions/action';
+import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
-export class Clock extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			time: 1500
-		}
-	}
-	render(){
+export const Clock = (props) => {
 		return (
-			<div className="clockContainer">
+			<div className="clockContainer z-depth-3">
+				<button onClick={props.toggleTimeRunning}>Reset</button>
 				<div className="clock">
-					<ReactCountdownClock seconds={this.state.time}
+					<ReactCountdownClock seconds={props.time}
+					fontSize={'30px'}
 					color={'#7986cb'}
 					size={375}
 					weight={15}
-					paused={!this.props.isTimeRunning}
-					pausedText={'Click Start'}
+					paused={!props.isTimeRunning}
+					pausedText={'Click to Start'}
+					onComplete={props.resetClock}
 					/>
 				</div>
 			</div>
     	);
 	}
-}
 
 
 const mapStateToProps = (state, props) => ({
-	isTimeRunning: state.Clock.isTimeRunning
+	isTimeRunning: state.Clock.isTimeRunning,
+	time: state.Clock.time
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	toggleTimeRunning() {
 		dispatch(toggleTime())
+	},
+	resetClock() {
+		dispatch(resetClock())
 	}
 })
 
