@@ -9,7 +9,8 @@ import IssueList from './components/issue-list';
 class App extends Component {
 	render() {
         return (
-        <div>
+        <div className="appContainer">
+            <h1 className="title">PomoGitto</h1>
             <Clock />
             <IssueList />
         </div>
