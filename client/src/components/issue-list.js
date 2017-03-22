@@ -28,17 +28,11 @@ export class IssueList extends React.Component {
             return <Issue title={issue.title} body={issue.body} url={issue.html_url}/>
         })
         return (
-            <div>
-
                 <div className="container">
                     <div className="row">
                         {cardIssues}
                     </div>
                 </div>
-                <h3>These issues aren't going to resolve themselves</h3>
-                <p>Choose one and get to work!</p>
-                {issues}
-            </div>
         )
     }
 
