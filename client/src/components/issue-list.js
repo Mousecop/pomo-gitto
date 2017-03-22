@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/action';
 import '../list.css';
 import '../imports/materialize-css/dist/css/materialize.css';
-
-
+import Issue from './issue';
 export class IssueList extends React.Component {
     constructor(props) {
         super(props)
@@ -21,11 +20,21 @@ export class IssueList extends React.Component {
                         Issue Title: {issue.title}
                         <p>Repo: {issue.repository.full_name}</p>
                         <a href={issue.html_url} target="_blank">Issue on Github</a>
-                        <button className={`button ${hidden = this.props.selected.title === issue.title ? '' : 'hidden'}`}type="button" onClick={this.props.toggleTimeRunning}>Start The Clock</button>
+                        <button className={`button ${hidden = this.props.selected.title === issue.title ? '' : 'hidde'}`}type="button" onClick={this.props.toggleTimeRunning}>Start The Clock</button>
                     </div>
+        })
+
+        const cardIssues = this.props.issues.map((issue, i) => {
+            return <Issue title={issue.title} body={issue.body} url={issue.html_url}/>
         })
         return (
             <div>
+
+                <div className="container">
+                    <div className="row">
+                        {cardIssues}
+                    </div>
+                </div>
                 <h3>These issues aren't going to resolve themselves</h3>
                 <p>Choose one and get to work!</p>
                 {issues}
