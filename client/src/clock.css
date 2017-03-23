@@ -2,16 +2,22 @@
     box-sizing: border-box;
 }
 
-.clockContainer {
-    width: 500px;
-    margin-left: 30px;
-    padding-top: 15px; 
-}
+
 
 .clock {
     text-align: center;
+    padding-top: 100px;
 }
 /*targeting the second canvas element that comes with react-countdown-clock*/
 canvas:nth-of-type(2) {
   position: relative !important;
+}
+
+.timer {
+    font-size: 150px;
+    color: #607d8b;
+}
+
+.resetButton {
+    text-align: center;
 }
