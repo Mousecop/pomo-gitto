@@ -4,7 +4,7 @@ import * as actions from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 
 
-let btnRef;
+
 export class Issue extends React.Component {
     constructor(props) {
         super(props)
