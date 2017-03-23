@@ -55,7 +55,7 @@ export class Clock extends React.Component {
 	  this.startCountdown();
   }
   render() {
-		let button = this.props.userSelected ? <button className="waves-effect waves-light btn"
+		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
 	   onClick={this.props.toggleTimeRunning}>Start the Clock
    </button> : '';
 	  const minutes = Math.floor(this.state.seconds / 60);
@@ -63,7 +63,7 @@ export class Clock extends React.Component {
 	  return (
 		  <div className="col s12 m5">
 			  <div className="card">
-					  <div className="card-content">
+					  <div className="card-content center-align">
 						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
 						  <span className="colon timer flow-text"> : </span>
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
