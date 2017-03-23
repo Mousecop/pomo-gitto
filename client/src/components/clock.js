@@ -8,27 +8,24 @@ export class Clock extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			seconds: 1500
+			seconds: 5
 		}
-	}
-
-	componentDidMount() {
-		// this.startCountdown();
 	}
 
 	componentWillUnmount() {
 		this.stopCountdown();
 	}
 
-	// componentWillReceiveProps(nextProps) {
-	// 	this.stopCountdown();
-	// 	this.setState({seconds: nextProps.seconds});
-	// 	this.startCountdown();
- 	//  }
+	 disableButton() {
+		 this.refs.btn.setAttribute('disabled', 'disabled')
+	 }
+
+	 enableButton() {
+		 this.refs.btn.removeAttribute('disabled');
+	 }
 	
 	tick() {
 		if (this.state.seconds <= 0) { 
-			console.log('timer over!')
 			this.stopCountdown();
 		} else {
 			this.setState({
@@ -45,7 +42,8 @@ export class Clock extends React.Component {
   }
   
   stopCountdown() {
-    this.setState({seconds: 1500})
+    this.setState({seconds: 5});
+	this.enableButton();
     clearInterval(this.timerID);
   }
 
@@ -60,7 +58,7 @@ export class Clock extends React.Component {
 					<span className="colon timer flow-text"> : </span>
 					<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 				</div>
-				<button onClick={() => {this.startCountdown()}} className="resetButton">Start Clock</button>
+				<button onClick={() => {this.startCountdown(); this.disableButton()}} ref='btn' className="resetButton">Start Clock</button>
 			</div>
     	);
 	}
