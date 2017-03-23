@@ -7,6 +7,13 @@ export class Issue extends React.Component {
     constructor(props) {
         super(props)
     };
+    disableButton() {
+		 this.refs.btn.setAttribute('disabled', 'disabled')
+	 }
+
+	 enableButton() {
+		 this.refs.btn.removeAttribute('disabled');
+	 }
 
     render() {
         return (
@@ -19,8 +26,7 @@ export class Issue extends React.Component {
                          <a href={this.props.url} target="_blank">Github</a>
                        </div>
                        <div className="card-action">
-                        <button className="waves-effect waves-light btn" onClick={this.props.toggleTimeRunning}>Pom This Issue</button>
-
+                        <button className="waves-effect waves-light btn" onClick={this.props.toggleTimeRunning} ref='btn'>Pom This Issue</button>
                        </div>
                     </div>
                 </div>
