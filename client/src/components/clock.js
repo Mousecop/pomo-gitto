@@ -7,7 +7,7 @@ import '../clock.css';
 
 export const Clock = (props) => {
 		return (
-			<div className="clockContainer z-depth-3">
+			<div className="col s12 m4">
 				<button onClick={props.toggleTimeRunning}>Reset</button>
 				<div className="clock">
 					<ReactCountdownClock seconds={props.time}
