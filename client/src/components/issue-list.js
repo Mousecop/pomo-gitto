@@ -15,15 +15,11 @@ export class IssueList extends React.Component {
     render() {
 
         const cardIssues = this.props.issues.map((issue, i) => {
-            return <Issue title={issue.title} body={issue.body} url={issue.html_url}/>
+            return <Issue key={i} title={issue.title} body={issue.body} url={issue.html_url}/>
         })
         return (
                 <div className="col s12 m7">
-                    <div className="container">
-                        <div className="row">
-                            {cardIssues}
-                        </div>
-                    </div>
+                    {cardIssues}
                 </div>
         )
     }

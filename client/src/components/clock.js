@@ -68,16 +68,14 @@ export class Clock extends React.Component {
 	  const minutes = Math.floor(this.state.seconds / 60);
 	  const remSeconds = this.state.seconds % 60;
 	  return (
-		  <div className="col s12 m4 z-depth-3">
-			  <div className="container">
-				  <div className="row">
-					  <div className="col s12">
+		  <div className="col s12 m5">
+			  <div className="card">
+					  <div className="card-content">
 						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
 						  <span className="colon timer flow-text"> : </span>
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 						  <button onClick={() =>{this.setState({seconds: 5})}}className="resetButton">Reset</button>
 					  </div>
-				  </div>
 			  </div>
 		  </div>
 	  );
