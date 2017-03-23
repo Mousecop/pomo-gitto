@@ -25,8 +25,8 @@ export class Issue extends React.Component {
     render() {
         return (
 
-                <div className="col s12 m6">
-                    <div className="card blue-grey darken-1">
+                <div className="col s12 ">
+                    <div className="card blue-grey darken-1 hoverable">
                        <div className="card-content white-text">
                          <span className="card-title">{this.props.title}</span>
                          <p>{this.props.body}</p>
