@@ -17,7 +17,15 @@ export class Clock extends React.Component {
 		this.stopCountdown();
 	}
 
-	 disableButton() {
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
+			this.onClickHandle();
+		} else {
+			this.stopCountdown();
+		}
+  	}
+
+	disableButton() {
 		 this.refs.btn.setAttribute('disabled', 'disabled')
 	 }
 
@@ -27,6 +35,7 @@ export class Clock extends React.Component {
 	
 	tick() {
 		if (this.state.seconds <= 0) { 
+			this.props.toggleTimeRunning();
 			this.stopCountdown();
 		} else {
 			this.setState({
@@ -64,11 +73,10 @@ export class Clock extends React.Component {
 					<span className="colon timer flow-text"> : </span>
 					<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 				</div>
-				<button onClick={this.onClickHandle} ref='btn' className="resetButton">Start Clock</button>
+				<button onClick={this.props.toggleTimeRunning} ref='btn' className="resetButton">Start Clock</button>
 			</div>
     	);
 	}
-		
 }
 
 
