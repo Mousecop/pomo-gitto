@@ -13,7 +13,9 @@ const initalState = {
 const listReducer = (state=initalState, action) => {
     switch(action.type) {
         case actions.SELECT_ISSUE:
-            return{...state, issueSelected: true, disabled: false, userSelected: action.userInput}
+            return{...state, disabled: false, userSelected: action.userInput}
+        case actions.TOGGLE_ISSUE_SELECTED:
+            return {...state, issueSelected: !state.issueSelected}
         case actions.DISABLE_ISSUE:
             return {...state, disabled: !state.disabled};
         case actions.FETCH_ISSUE_LIST_SUCCESS:

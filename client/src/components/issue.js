@@ -3,17 +3,24 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 
+
+let btnRef;
 export class Issue extends React.Component {
     constructor(props) {
         super(props)
     };
     disableButton() {
-		 this.refs.btn.setAttribute('disabled', 'disabled')
+		 btnRef.setAttribute('disabled', 'disabled')
 	 }
 
 	 enableButton() {
-		 this.refs.btn.removeAttribute('disabled');
+		 btnRef.removeAttribute('disabled');
 	 }
+
+     onHandleClick(userInput) {
+         this.props.toggleTimeRunning();
+         this.props.toggleIssueSelected;
+     }
 
     render() {
         return (
@@ -26,7 +33,7 @@ export class Issue extends React.Component {
                          <a href={this.props.url} target="_blank">Github</a>
                        </div>
                        <div className="card-action">
-                        <button className="waves-effect waves-light btn" onClick={this.props.toggleTimeRunning} ref='btn'>Pom This Issue</button>
+                        <button className="waves-effect waves-light btn" onClick={this.onHandleClick} ref={ref => btnRef = ref}>Pom This Issue</button>
                        </div>
                     </div>
                 </div>
@@ -35,9 +42,17 @@ export class Issue extends React.Component {
     }
 };
 
+const mapStateToProps = (state, props) => ({
+    userInput:state.List.userSelected,
+    issueSelected: state.List.issueSelected
+})
+
 const mapDispatchToProps = (dispatch) => ({
 	toggleTimeRunning() {
 		dispatch(actions.toggleTime())
-	}
+	},
+    toggleIssueSelected() {
+        dispatch(actions.toggleIssueSelected())
+    }
 })
-export default connect(null, mapDispatchToProps)(Issue);
+export default connect(mapStateToProps, mapDispatchToProps)(Issue);

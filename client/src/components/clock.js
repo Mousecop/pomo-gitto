@@ -4,6 +4,8 @@ import { toggleTime, resetClock } from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
+
+let btnRef;
 export class Clock extends React.Component {
 	constructor(props) {
 		super(props);
@@ -12,10 +14,17 @@ export class Clock extends React.Component {
 		}
 		this.onClickHandle = this.onClickHandle.bind(this);
 	}
-
 	componentWillUnmount() {
 		this.stopCountdown();
 	}
+
+	componentDidMount() {
+         if(this.props.issueSelected === false) {
+            this.disableButton();
+        } else {
+            this.enableButton();
+        }
+     }
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
@@ -26,11 +35,11 @@ export class Clock extends React.Component {
   	}
 
 	disableButton() {
-		 this.refs.btn.setAttribute('disabled', 'disabled')
+		 btnRef.setAttribute('disabled', 'disabled')
 	 }
 
 	 enableButton() {
-		 this.refs.btn.removeAttribute('disabled');
+		 btnRef.removeAttribute('disabled');
 	 }
 	
 	tick() {
@@ -73,7 +82,7 @@ export class Clock extends React.Component {
 					<span className="colon timer flow-text"> : </span>
 					<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 				</div>
-				<button onClick={this.props.toggleTimeRunning} ref='btn' className="resetButton">Start Clock</button>
+				<button onClick={this.props.toggleTimeRunning} ref={ref => btnRef = ref} className="resetButton">Start Clock</button>
 			</div>
     	);
 	}
@@ -82,7 +91,8 @@ export class Clock extends React.Component {
 
 const mapStateToProps = (state, props) => ({
 	isTimeRunning: state.Clock.isTimeRunning,
-	seconds: state.Clock.seconds
+	seconds: state.Clock.seconds,
+	issueSelected: state.List.issueSelected
 });
 
 const mapDispatchToProps = (dispatch) => ({
