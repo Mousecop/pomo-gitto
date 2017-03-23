@@ -10,7 +10,7 @@ export class Issue extends React.Component {
         super(props)
     };
 
-     onHandleClick(userInput) {
+     onHandleClick() {
          this.props.toggleTimeRunning();
          this.props.toggleIssueSelected;
      }
@@ -18,10 +18,10 @@ export class Issue extends React.Component {
     render() {
         let poms = this.props.pomHistory;
         let icons;
-        if (poms.length > 0) {
+        if (poms.length > 0 && this.props.userSelected == this.props.title) {
             icons = poms.map((pom, i) => {
                 return   <i key={i} className="material-icons">done</i>
-            })
+            });
         }
 
         return (
@@ -32,7 +32,7 @@ export class Issue extends React.Component {
                      <a href={this.props.url} target="_blank">Github</a>
                    </div>
                    <div className="card-action">
-                    <button className="waves-effect waves-light btn" onClick={() => this.props.selectIssue(this.props.title)}>Pom This Issue</button>
+                    <button className="waves-effect waves-light btn" onClick={() => {this.props.selectIssue(this.props.title); this.props.toggleIssueSelected()}}>Pom This Issue</button>
                         {icons}
                    </div>
                 </div>
@@ -41,7 +41,9 @@ export class Issue extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
-    pomHistory: state.List.pommoHistory
+    pomHistory: state.List.pommoHistory,
+    issueIsSelected: state.List.issueSelected,
+    userSelected: state.List.userSelected
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -50,6 +52,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
     selectIssue(title) {
         dispatch(actions.selectedIssue(title))
+    },
+    toggleIssueSelected() {
+        dispatch(actions.toggleIssueSelected());
     }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Issue);
