@@ -18,9 +18,11 @@ export class IssueList extends React.Component {
             return <Issue title={issue.title} body={issue.body} url={issue.html_url}/>
         })
         return (
-                <div className="container">
-                    <div className="row">
-                        {cardIssues}
+                <div className="col s12 m7">
+                    <div className="container">
+                        <div className="row">
+                            {cardIssues}
+                        </div>
                     </div>
                 </div>
         )

@@ -25,9 +25,9 @@ export class Clock extends React.Component {
 		this.setState({seconds: nextProps.seconds});
 		this.startCountdown();
  	 }
-	
+
 	tick() {
-		if (this.state.seconds <= 0) { 
+		if (this.state.seconds <= 0) {
 			console.log('timer over!')
 			this.stopCountdown();
 		} else {
@@ -36,14 +36,14 @@ export class Clock extends React.Component {
 			});
 		}
   	}
-  
+
   startCountdown() {
      this.timerID = setInterval(
       () => this.tick(),
       1000
     );
   }
-  
+
   stopCountdown() {
     this.setState({seconds: 0})
     clearInterval(this.timerID);
@@ -54,17 +54,21 @@ export class Clock extends React.Component {
 		const minutes = Math.floor(this.state.seconds / 60);
 		const remSeconds = this.state.seconds % 60;
 		return (
-			<div className=" clockContainer container z-depth-3">
-				<div className="clock">
-					<span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
-					<span className="colon timer flow-text"> : </span>
-					<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
+			<div className="col s12 m4 z-depth-3">
+				<div className="container">
+					<div className="row">
+						<div className="col s12">
+							<span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
+							<span className="colon timer flow-text"> : </span>
+							<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
+							<button onClick={() =>{this.setState({seconds: 5})}}className="resetButton">Reset</button>
+						</div>
+					</div>
 				</div>
-				<button onClick={() => {this.setState({seconds: 5})}} className="resetButton">Reset</button>
 			</div>
     	);
 	}
-		
+
 }
 
 
