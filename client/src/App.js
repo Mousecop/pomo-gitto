@@ -10,12 +10,12 @@ import Login from './components/login';
 class App extends Component {
 	render() {
         return (
-        <div className="z-depth-3">
+        <div className="">
             <h1 className="title">PomoGitto</h1>
-            <div className="row">
-				<Clock />
-	            {this.props.children}
-			</div>
+				<div className="row">
+					<Clock />
+					{this.props.children}
+				</div>
         </div>
         );
 	}

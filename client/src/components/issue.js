@@ -7,15 +7,17 @@ export class Issue extends React.Component {
     constructor(props) {
         super(props)
     };
-    disableButton() {
-		 this.refs.btn.setAttribute('disabled', 'disabled')
-	 }
 
-	 enableButton() {
-		 this.refs.btn.removeAttribute('disabled');
-	 }
 
     render() {
+        let poms = this.props.pomHistory;
+        let icons;
+        if (poms.length > 0) {
+            icons = poms.map((pom, i) => {
+                return   <i key={i} className="material-icons">done</i>
+            })
+        }
+
         return (
                 <div className="card blue-grey darken-1 hoverable">
                    <div className="card-content white-text">
@@ -24,16 +26,24 @@ export class Issue extends React.Component {
                      <a href={this.props.url} target="_blank">Github</a>
                    </div>
                    <div className="card-action">
-                    <button className="waves-effect waves-light btn" onClick={this.props.toggleTimeRunning} ref='btn'>Pom This Issue</button>
+                    <button className="waves-effect waves-light btn" onClick={() => this.props.selectIssue(this.props.title)}>Pom This Issue</button>
+                        {icons}
                    </div>
+
                 </div>
         )
     }
 };
 
+const mapStateToProps = (state, props) => ({
+    pomHistory: state.List.pommoHistory
+})
 const mapDispatchToProps = (dispatch) => ({
 	toggleTimeRunning() {
 		dispatch(actions.toggleTime())
-	}
+	},
+    selectIssue(title) {
+        dispatch(actions.selectedIssue(title))
+    }
 })
-export default connect(null, mapDispatchToProps)(Issue);
+export default connect(mapStateToProps, mapDispatchToProps)(Issue);

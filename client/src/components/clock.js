@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTime, resetClock } from '../actions/action';
+import { toggleTime, resetClock, pommoHistory } from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
@@ -10,7 +10,7 @@ export class Clock extends React.Component {
 		this.state = {
 			seconds: 5
 		}
-		this.onClickHandle = this.onClickHandle.bind(this);
+
 	}
 
 	componentWillUnmount() {
@@ -25,18 +25,13 @@ export class Clock extends React.Component {
 		}
   	}
 
-	disableButton() {
-		 this.refs.btn.setAttribute('disabled', 'disabled')
-	 }
-
-	 enableButton() {
-		 this.refs.btn.removeAttribute('disabled');
-	 }
 
 	tick() {
 		if (this.state.seconds <= 0) {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
+			this.props.addPommoHistory();
+
 		} else {
 			this.setState({
 				seconds: this.state.seconds - 1
@@ -53,18 +48,17 @@ export class Clock extends React.Component {
 
   stopCountdown() {
     this.setState({seconds: 5});
-	this.enableButton();
     clearInterval(this.timerID);
   }
 
   onClickHandle () {
 	  this.startCountdown();
-	  this.disableButton();
+
   }
-
-
-
   render() {
+		let button = this.props.userSelected ? <button className="waves-effect waves-light btn"
+	   onClick={this.props.toggleTimeRunning}>Start the Clock
+   </button> : '';
 	  const minutes = Math.floor(this.state.seconds / 60);
 	  const remSeconds = this.state.seconds % 60;
 	  return (
@@ -74,7 +68,12 @@ export class Clock extends React.Component {
 						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
 						  <span className="colon timer flow-text"> : </span>
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
-						  <button onClick={() =>{this.setState({seconds: 5})}}className="resetButton">Reset</button>
+					  </div>
+					  <div className="card-action">
+						  <button className="waves-effect waves-light btn"
+							  onClick={() =>{this.setState({seconds: 5})}}>Reset
+						  </button>
+						  {button}
 					  </div>
 			  </div>
 		  </div>
@@ -85,7 +84,9 @@ export class Clock extends React.Component {
 
 const mapStateToProps = (state, props) => ({
 	isTimeRunning: state.Clock.isTimeRunning,
-	seconds: state.Clock.seconds
+	seconds: state.Clock.seconds,
+	userSelected: state.List.userSelected,
+	pommoHistory: state.List.pommoHistory
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -94,6 +95,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	resetClock() {
 		dispatch(resetClock())
+	},
+	addPommoHistory() {
+		dispatch(pommoHistory())
 	}
 })
 
