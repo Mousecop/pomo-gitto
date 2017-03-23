@@ -2,7 +2,7 @@ import * as actions from '../actions/action';
 
 const initalState = {
     isTimeRunning: false,
-    time: 1
+    seconds: 10
 };
 
 
@@ -11,8 +11,7 @@ const clockReducer = (state=initalState, action) => {
         case actions.TOGGLE_TIME:
             return {...state, isTimeRunning: !state.isTimeRunning};
         case actions.RESET_CLOCK:
-            console.log(state)
-            return ({time: 20, isTimeRunning: true});
+            return ({time: state.seconds, isTimeRunning: false});
         default:
             return state;
     }
