@@ -24,6 +24,14 @@ export const fetchIssueList = () => dispatch => {
     })
 }
 
+export const gitLogin = () => {
+    const url = 'http://localhost:8080/api/auth/github';
+    fetch(url)
+        .then(response => {
+            return response.json();
+        })
+}
+
 
 
 

@@ -11,18 +11,6 @@
   margin-top: 36px;
 
 }
-
-.clock {
-    height: 400px;
-}
-
-.issue-box {
-    width: 400px;
-    padding: 15px;
-    background-color: aquamarine;
-    border: 1px solid grey;
-}
-
 .hidden {
     display: none;
 }
@@ -35,4 +23,3 @@
 .title{
   text-align: center;
 }
-

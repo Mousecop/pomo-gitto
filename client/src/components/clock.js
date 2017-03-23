@@ -32,9 +32,9 @@ export class Clock extends React.Component {
 	 enableButton() {
 		 this.refs.btn.removeAttribute('disabled');
 	 }
-	
+
 	tick() {
-		if (this.state.seconds <= 0) { 
+		if (this.state.seconds <= 0) {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
 		} else {
@@ -43,14 +43,14 @@ export class Clock extends React.Component {
 			});
 		}
   	}
-  
+
   startCountdown() {
      this.timerID = setInterval(
       () => this.tick(),
       1000
     );
   }
-  
+
   stopCountdown() {
     this.setState({seconds: 5});
 	this.enableButton();
