@@ -22,6 +22,8 @@ const listReducer = (state=initalState, action) => {
             return {...state, issues: action.lists}
         case actions.POMMO_HISTORY:
             return {...state, pommoHistory: [...state.pommoHistory, state.userSelected]}
+        case actions.CLEAR_USER_SELECTED:
+            return {...state, userSelected: ''}
         default:
             return state;
     }
