@@ -7,6 +7,7 @@ export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
 export const TOGGLE_TIME = 'TOGGLE_TIME';
 export const TOGGLE_ISSUE_SELECTED = 'TOGGLE_ISSUE_SELECTED';
+export const CLEAR_USER_SELECTED = 'CLEAR_USER_SELECTED';
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -35,6 +36,9 @@ export const gitLogin = () => {
 
 
 
+export const clearUserSelected = () => ({
+    type: CLEAR_USER_SELECTED
+})
 
 export const toggleTime = () => ({
     type: TOGGLE_TIME
