@@ -28,6 +28,7 @@ export const fetchIssueList = () => dispatch => {
 
 export const gitLogin = () => {
     const url = 'https://pomo-gitto.herokuapp.com/api/auth/github';
+    
     fetch(url)
         .then(response => {
             return response.json();
