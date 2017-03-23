@@ -14,7 +14,7 @@ class App extends Component {
             <h1 className="title">PomoGitto</h1>
             <div className="row">
 				<Clock />
-	            <Login />
+	            {this.props.children}
 			</div>
         </div>
         );
