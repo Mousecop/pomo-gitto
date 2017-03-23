@@ -10,6 +10,7 @@ export class Clock extends React.Component {
 		this.state = {
 			seconds: 5
 		}
+		this.onClickHandle = this.onClickHandle.bind(this);
 	}
 
 	componentWillUnmount() {
@@ -47,6 +48,11 @@ export class Clock extends React.Component {
     clearInterval(this.timerID);
   }
 
+  onClickHandle () {
+	  this.startCountdown();
+	  this.disableButton();
+  }
+
 
 	render() {
 		const minutes = Math.floor(this.state.seconds / 60);
@@ -58,7 +64,7 @@ export class Clock extends React.Component {
 					<span className="colon timer flow-text"> : </span>
 					<span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 				</div>
-				<button onClick={() => {this.startCountdown(); this.disableButton()}} ref='btn' className="resetButton">Start Clock</button>
+				<button onClick={this.onClickHandle} ref='btn' className="resetButton">Start Clock</button>
 			</div>
     	);
 	}
