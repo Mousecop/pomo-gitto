@@ -5,7 +5,6 @@ import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
 
-let btnRef;
 export class Clock extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,13 +17,6 @@ export class Clock extends React.Component {
 		this.stopCountdown();
 	}
 
-	componentDidMount() {
-         if(this.props.issueSelected === false) {
-            this.disableButton();
-        } else {
-            this.enableButton();
-        }
-     }
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
@@ -86,19 +78,14 @@ export class Clock extends React.Component {
 		  </div>
 	  );
   }
->>>>>>> c82178accbdd2eb5b05392c3ebe36714ce29e195
 }
 
 
 const mapStateToProps = (state, props) => ({
 	isTimeRunning: state.Clock.isTimeRunning,
 	seconds: state.Clock.seconds,
-<<<<<<< HEAD
-	issueSelected: state.List.issueSelected
-=======
 	userSelected: state.List.userSelected,
 	pommoHistory: state.List.pommoHistory
->>>>>>> c82178accbdd2eb5b05392c3ebe36714ce29e195
 });
 
 const mapDispatchToProps = (dispatch) => ({
