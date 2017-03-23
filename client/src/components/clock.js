@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTime, resetClock, pommoHistory } from '../actions/action';
+import * as actions from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
@@ -31,6 +31,8 @@ export class Clock extends React.Component {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
 			this.props.addPommoHistory();
+			this.props.clearUserSelected();
+			
 
 		} else {
 			this.setState({
@@ -90,13 +92,16 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	toggleTimeRunning() {
-		dispatch(toggleTime())
+		dispatch(actions.toggleTime())
 	},
 	resetClock() {
-		dispatch(resetClock())
+		dispatch(actions.resetClock())
 	},
 	addPommoHistory() {
-		dispatch(pommoHistory())
+		dispatch(actions.pommoHistory())
+	},
+	clearUserSelected() {
+		dispatch(actions.clearUserSelected())
 	}
 })
 
