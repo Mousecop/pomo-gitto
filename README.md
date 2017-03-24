@@ -13,13 +13,11 @@
 > cd pomo-gitto
 
 > npm install 
-
 ```
 
 ### Launching 
 ```
 > npm run dev
-
 ```
 Then open [http://localhost:8080](http://localhost:8080) in a browser.
 
