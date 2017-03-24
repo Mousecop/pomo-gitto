@@ -33,7 +33,7 @@ Then open [http://localhost:8080](http://localhost:8080) in a browser.
 
 <h2>Wire Frames</h2>
 <p>All wire frames were made with <a href="https://www.lucidchart.com/pages/b/content_section1?ab=1">LucidCharts</a>.</p>
-<img src="client/public/images/pomogitto-collage.png">
+<img src="client/public/images/pomogitto-collage.jpg">
 
 <h2>Technologies</h2>
 <h3>Front-End</h3>
