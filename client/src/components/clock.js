@@ -110,7 +110,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	clearUserSelected() {
 		dispatch(actions.clearUserSelected())
-
+	},
+	logout() {
+		dispatch(actions.fetchLogout());
 	}
 })
 

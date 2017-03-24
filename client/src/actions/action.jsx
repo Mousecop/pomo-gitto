@@ -6,6 +6,7 @@ export const SELECT_ISSUE = 'SELECT_ISSUE';
 export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
 export const TOGGLE_TIME = 'TOGGLE_TIME';
+export const LOGOUT = 'LOGOUT';
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -31,6 +32,18 @@ export const gitLogin = () => {
             return response.json();
         })
 }
+
+export const fetchLogout = () => dispatch => {
+    const url = '/api/auth/logout';
+    fetch(url)
+        .then(response => {
+            window.location = '/';
+            return response.json();
+        })
+}
+export const logout = () => ({
+    type: LOGOUT
+})
 
 export const toggleTime = () => ({
     type: TOGGLE_TIME
