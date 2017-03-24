@@ -7,7 +7,7 @@
 
 ### Installing project locally
 
-````
+```
 > git clone https://github.com/Jean-Luc19/pomo-gitto.git 
 
 > cd pomo-gitto
