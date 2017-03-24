@@ -11,13 +11,14 @@ export class TaskMaker extends React.Component {
         super(props)
         this.state = {
             title: '',
-            description: ''
+            description: '',
+            hidden: ''
         }
         this.handleClick = this.handleClick.bind(this);
 
     }
     handleClick(text, text2) {
-        this.setState({title: text.value, description: text2.value})
+        this.setState({title: text.value, description: text2.value, hidden: 'hidden'})
 
     }
 
@@ -38,14 +39,16 @@ export class TaskMaker extends React.Component {
         return (
             <div className="col s12 m7">
                 {taskCard}
-                <div className="input-field col s6">
-                    <input id="input_text" type="text" data-length="15" placeholder="Title" ref={input => {this.textInput = input; }}/>
-                </div>
-                <div className="input-field col s12">
-                     <textarea id="textarea1" className="materialize-textarea" data-length="120" placeholder="Description" ref={el => {this.descInput = el;}}></textarea>
-                </div>
-                <div className="col s6">
-                    <button className="waves-effect waves-light btn" onClick={() => this.handleClick(this.textInput, this.descInput)}>Pom This Task</button>
+                <div className={this.state.hidden}>
+                    <div className="input-field col s6">
+                        <input id="input_text" type="text" data-length="15" placeholder="Title" ref={input => {this.textInput = input; }}/>
+                    </div>
+                    <div className="input-field col s12">
+                         <textarea id="textarea1" className="materialize-textarea" data-length="120" placeholder="Description" ref={el => {this.descInput = el;}}></textarea>
+                    </div>
+                    <div className="col s6">
+                        <button className="waves-effect waves-light btn" onClick={() => this.handleClick(this.textInput, this.descInput)}>Pom This Task</button>
+                    </div>
                 </div>
             </div>
         )
