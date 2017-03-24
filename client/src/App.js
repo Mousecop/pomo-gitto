@@ -18,10 +18,13 @@ export class App extends Component {
 				{logoutButton}
             	<h1 className="title">PomoGitto</h1>
 			</header>
-				<div className="row">
-					<Clock />
-					{this.props.children}
-				</div>
+			<div className="row">
+				<Clock />
+				{this.props.children}
+			</div>
+			<footer className="footer">
+				<p>Built by <a href="https://github.com/Jean-Luc19">Aaron Gottlieb</a> & <a href="https://github.com/Mousecop">Jacob Askew</a></p>
+			</footer>
         </div>
         );
 	}

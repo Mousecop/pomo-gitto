@@ -18,9 +18,10 @@
 
 .title{
   text-align: center;
-  border-bottom: 2px solid #cfd8dc;
+  border-bottom: 2px solid #cfd8dc; 
   padding-bottom: 8px;
   color: #37474f;
+  font-family: 'Russo One', sans-serif;
 }
 
 .logoutButton {
@@ -39,4 +40,14 @@
 .tomato-icon {
     width: 50px;
     height: 50px;
+}
+
+.footer {
+  height: 50px;
+  width: 100%;
+  background-color: #f2f2f2;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
 }
