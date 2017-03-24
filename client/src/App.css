@@ -15,11 +15,14 @@
     display: none;
 }
 
-.header {
-  font-size: 36px;
-  font-weight: bold;
-}
 
 .title{
   text-align: center;
+  border-bottom: 2px solid #cfd8dc; 
+  padding-bottom: 8px;
+  color: #37474f;
+}
+
+.logoutButton {
+  margin-right: 15px;
 }
