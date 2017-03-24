@@ -21,8 +21,10 @@ export class Login extends React.Component {
 
                     </div>
                     <div className="card-action">
+
                          <a href="https://pomo-gitto.herokuapp.com/api/auth/github"><button className="waves-effectwaves-light btn" >GitHub</button></a><span>   </span>
-                         <button className="waves-effectwaves-light btn">No GitHub</button>
+                          <a href="/#/tasks"><button className="waves-effectwaves-light btn">No Git For Me</button></a>
+
                     </div>
                 </div>
             </div>
