@@ -74,7 +74,7 @@ export class Clock extends React.Component {
 					  </div>
 					  <div className="card-action">
 						  <button className="waves-effect waves-light btn"
-							  onClick={() => this.props.toggleTimeRunning()}>Reset
+							  onClick={() => this.setState({seconds: 5})}>Reset
 						  </button>
 
 						  {button}
