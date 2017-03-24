@@ -7,11 +7,17 @@ import * as actions from './actions/action';
 import IssueList from './components/issue-list';
 import Login from './components/login';
 
-class App extends Component {
+export class App extends Component {
 	render() {
+		let logoutButton = this.props.loggedIn ?   <button className="waves-effect waves-light btn right logoutButton"
+						  onClick={() => this.props.logout()}>Logout
+					  </button> : '';
         return (
         <div className="">
-            <h1 className="title">PomoGitto</h1>
+			<header className='header'>
+				{logoutButton}
+            	<h1 className="title">PomoGitto</h1>
+			</header>
 				<div className="row">
 					<Clock />
 					{this.props.children}
@@ -21,4 +27,14 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	loggedIn: state.List.loggedIn
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	logout() {
+		dispatch(actions.fetchLogout());
+	}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
