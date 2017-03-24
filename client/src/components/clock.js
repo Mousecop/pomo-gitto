@@ -62,9 +62,6 @@ export class Clock extends React.Component {
 		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
 	   onClick={this.props.toggleTimeRunning}>Start the Clock
    </button> : '';
-   		let logoutButton = this.props.loggedIn ?   <button className="waves-effect waves-light btn"
-						  onClick={() => this.props.logout()}>Logout
-					  </button> : '';
 	  const minutes = Math.floor(this.state.seconds / 60);
 	  const remSeconds = this.state.seconds % 60;
 	  return (
@@ -82,7 +79,6 @@ export class Clock extends React.Component {
 
 						  {button}
 					  </div>
-						{logoutButton}
 			  </div>
 		  </div>
 	  );
