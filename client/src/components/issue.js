@@ -19,15 +19,10 @@ export class Issue extends React.Component {
         let poms = this.props.pomHistory.filter(pom => {
             return pom === this.props.title;
         });
-        console.log(poms)
         let icons;
-
             icons = poms.map((pom, i) => {
                 return   <i key={i} className="material-icons">done</i>
             });
-
-
-
         return (
                 <div className="card blue-grey darken-1 hoverable">
                    <div className="card-content white-text">
