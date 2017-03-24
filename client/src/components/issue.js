@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
-
+import imageArray from '../imports/images/images';
 
 
 export class Issue extends React.Component {
@@ -21,18 +21,22 @@ export class Issue extends React.Component {
         });
         let icons;
             icons = poms.map((pom, i) => {
-                return   <i key={i} className="material-icons">done</i>
+                return  <img className="tomato-icon" src={imageArray[0]} alt=""></img>
             });
         return (
                 <div className="card blue-grey darken-1 hoverable">
                    <div className="card-content white-text">
                      <span className="card-title">{this.props.title}</span>
+
                      <p>{this.props.body}</p>
                      <a href={this.props.url} target="_blank">Github</a>
                    </div>
                    <div className="card-action">
+                       <div className="completed">
+                           {icons}
+                       </div>
                     <button className="waves-effect waves-light btn" onClick={() => {this.props.selectIssue(this.props.title); this.props.toggleIssueSelected()}}>Pom This Issue</button>
-                        {icons}
+
                    </div>
                 </div>
         )
