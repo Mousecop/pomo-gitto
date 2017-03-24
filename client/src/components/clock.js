@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import * as actions from '../actions/action';
+
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
 
@@ -32,7 +34,7 @@ export class Clock extends React.Component {
 			this.stopCountdown();
 			this.props.addPommoHistory();
 			this.props.clearUserSelected();
-			
+
 
 		} else {
 			this.setState({
@@ -60,6 +62,9 @@ export class Clock extends React.Component {
 		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
 	   onClick={this.props.toggleTimeRunning}>Start the Clock
    </button> : '';
+   		let logoutButton = this.props.loggedIn ?   <button className="waves-effect waves-light btn"
+						  onClick={() => this.props.logout()}>Logout
+					  </button> : '';
 	  const minutes = Math.floor(this.state.seconds / 60);
 	  const remSeconds = this.state.seconds % 60;
 	  return (
@@ -72,10 +77,12 @@ export class Clock extends React.Component {
 					  </div>
 					  <div className="card-action">
 						  <button className="waves-effect waves-light btn"
-							  onClick={() =>{this.setState({seconds: 5})}}>Reset
+							  onClick={() => this.props.toggleTimeRunning()}>Reset
 						  </button>
+
 						  {button}
 					  </div>
+						{logoutButton}
 			  </div>
 		  </div>
 	  );
@@ -87,7 +94,8 @@ const mapStateToProps = (state, props) => ({
 	isTimeRunning: state.Clock.isTimeRunning,
 	seconds: state.Clock.seconds,
 	userSelected: state.List.userSelected,
-	pommoHistory: state.List.pommoHistory
+	pommoHistory: state.List.pommoHistory,
+	loggedIn: state.List.loggedIn
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -102,6 +110,7 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	clearUserSelected() {
 		dispatch(actions.clearUserSelected())
+
 	}
 })
 

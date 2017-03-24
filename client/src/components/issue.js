@@ -16,13 +16,17 @@ export class Issue extends React.Component {
      }
 
     render() {
-        let poms = this.props.pomHistory;
+        let poms = this.props.pomHistory.filter(pom => {
+            return pom === this.props.title;
+        });
+        console.log(poms)
         let icons;
-        if (poms.length > 0 && this.props.userSelected == this.props.title) {
+
             icons = poms.map((pom, i) => {
                 return   <i key={i} className="material-icons">done</i>
             });
-        }
+
+
 
         return (
                 <div className="card blue-grey darken-1 hoverable">

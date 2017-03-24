@@ -18,7 +18,7 @@ mongoose.Promise = global.Promise;
 
 const routes = require('./routes/api');
 
-
+const githubIds = require('./config');
 // API endpoints go here!
 
 // *** middleware *** //
@@ -50,7 +50,7 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 let server;
 function runServer(port=3001) {
     return new Promise((resolve, reject) => {
-        mongoose.connect('mongodb://aarongo:pass1234@ds137760.mlab.com:37760/pomo-gitto', err => {
+        mongoose.connect("mongodb://aarongo:pass1234@ds137760.mlab.com:37760/pomo-gitto", err => {
 
             if (err) {
 

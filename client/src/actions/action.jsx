@@ -6,8 +6,6 @@ export const SELECT_ISSUE = 'SELECT_ISSUE';
 export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
 export const TOGGLE_TIME = 'TOGGLE_TIME';
-export const TOGGLE_ISSUE_SELECTED = 'TOGGLE_ISSUE_SELECTED';
-export const CLEAR_USER_SELECTED = 'CLEAR_USER_SELECTED';
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -27,26 +25,15 @@ export const fetchIssueList = () => dispatch => {
 }
 
 export const gitLogin = () => {
-    const url = 'https://pomo-gitto.herokuapp.com/api/auth/github';
-    
+    const url = 'http://localhost:8080/api/auth/github';
     fetch(url)
         .then(response => {
             return response.json();
         })
 }
 
-
-
-export const clearUserSelected = () => ({
-    type: CLEAR_USER_SELECTED
-})
-
 export const toggleTime = () => ({
     type: TOGGLE_TIME
-})
-
-export const toggleIssueSelected = () => ({
-    type: TOGGLE_ISSUE_SELECTED
 })
 
 export const fetchIssueListSuccess = (lists) => ({

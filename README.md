@@ -1,6 +1,6 @@
-# Thinkful Full Stack Template
+# Pommo Gito
 
-A template for developing and deploying full stack JavaScript apps.
+A Pomodoro Timer Integrated with GitHub
 
 ## Getting started
 
@@ -49,4 +49,3 @@ Requires the [Heroku CLI client](https://devcenter.heroku.com/articles/heroku-co
 ### Deploying to Heroku
 
 * Push your code to Heroku: `git push heroku master`
-

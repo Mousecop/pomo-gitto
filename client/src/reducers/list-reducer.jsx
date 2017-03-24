@@ -1,16 +1,17 @@
 import * as actions from '../actions/action';
 
 
-const initalState = {
+const initialState = {
     issueSelected: false,
     issues: [],
     disabled: true,
     userSelected: '',
-    pommoHistory: []
+    pommoHistory: [],
+    loggedIn: false
 };
 
 
-const listReducer = (state=initalState, action) => {
+const listReducer = (state=initialState, action) => {
     switch(action.type) {
         case actions.SELECT_ISSUE:
             return{...state, disabled: false, userSelected: action.userInput}
@@ -19,11 +20,14 @@ const listReducer = (state=initalState, action) => {
         case actions.DISABLE_ISSUE:
             return {...state, disabled: !state.disabled};
         case actions.FETCH_ISSUE_LIST_SUCCESS:
-            return {...state, issues: action.lists}
+            return {...state, issues: action.lists, loggedIn: true}
         case actions.POMMO_HISTORY:
             return {...state, pommoHistory: [...state.pommoHistory, state.userSelected]}
+        case actions.LOGOUT:
+            return {...initialState}
         case actions.CLEAR_USER_SELECTED:
             return {...state, userSelected: ''}
+
         default:
             return state;
     }
