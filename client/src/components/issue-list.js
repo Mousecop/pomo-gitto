@@ -18,7 +18,7 @@ export class IssueList extends React.Component {
             return <Issue key={i} title={issue.title} body={issue.body} url={issue.html_url}/>
         })
         return (
-                <div className="col s12 m7">
+                <div className="col s12 m7 card">
                     {cardIssues}
                 </div>
         )

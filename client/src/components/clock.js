@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTime, resetClock, pommoHistory, fetchLogout } from '../actions/action';
+
+import * as actions from '../actions/action';
+
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
+
 
 export class Clock extends React.Component {
 	constructor(props) {
@@ -12,10 +15,10 @@ export class Clock extends React.Component {
 		}
 
 	}
-
 	componentWillUnmount() {
 		this.stopCountdown();
 	}
+
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
@@ -25,12 +28,13 @@ export class Clock extends React.Component {
 		}
   	}
 
-
 	tick() {
 		if (this.state.seconds <= 0) {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
 			this.props.addPommoHistory();
+			this.props.clearUserSelected();
+
 
 		} else {
 			this.setState({
@@ -53,10 +57,9 @@ export class Clock extends React.Component {
 
   onClickHandle () {
 	  this.startCountdown();
-
   }
   render() {
-		let button = this.props.userSelected ? <button className="waves-effect waves-light btn"
+		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
 	   onClick={this.props.toggleTimeRunning}>Start the Clock
    </button> : '';
    		let logoutButton = this.props.loggedIn ?   <button className="waves-effect waves-light btn"
@@ -67,7 +70,7 @@ export class Clock extends React.Component {
 	  return (
 		  <div className="col s12 m5">
 			  <div className="card">
-					  <div className="card-content">
+					  <div className="card-content center-align">
 						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
 						  <span className="colon timer flow-text"> : </span>
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
@@ -97,16 +100,17 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	toggleTimeRunning() {
-		dispatch(toggleTime())
+		dispatch(actions.toggleTime())
 	},
 	resetClock() {
-		dispatch(resetClock())
+		dispatch(actions.resetClock())
 	},
 	addPommoHistory() {
-		dispatch(pommoHistory())
+		dispatch(actions.pommoHistory())
 	},
-	logout() {
-		dispatch(fetchLogout())
+	clearUserSelected() {
+		dispatch(actions.clearUserSelected())
+
 	}
 })
 

@@ -14,7 +14,9 @@ const initialState = {
 const listReducer = (state=initialState, action) => {
     switch(action.type) {
         case actions.SELECT_ISSUE:
-            return{...state, issueSelected: true, disabled: false, userSelected: action.userInput}
+            return{...state, disabled: false, userSelected: action.userInput}
+        case actions.TOGGLE_ISSUE_SELECTED:
+            return {...state, issueSelected: !state.issueSelected}
         case actions.DISABLE_ISSUE:
             return {...state, disabled: !state.disabled};
         case actions.FETCH_ISSUE_LIST_SUCCESS:
@@ -23,6 +25,9 @@ const listReducer = (state=initialState, action) => {
             return {...state, pommoHistory: [...state.pommoHistory, state.userSelected]}
         case actions.LOGOUT:
             return {...initialState}
+        case actions.CLEAR_USER_SELECTED:
+            return {...state, userSelected: ''}
+
         default:
             return state;
     }
