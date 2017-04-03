@@ -16,6 +16,7 @@ export class Issue extends React.Component {
      }
 
     render() {
+        //This renders the icons based on which Issue was selected.
         let poms = this.props.pomHistory.filter(pom => {
             return pom === this.props.title;
         });
@@ -27,7 +28,6 @@ export class Issue extends React.Component {
                 <div className="card blue-grey darken-1 hoverable">
                    <div className="card-content white-text">
                      <span className="card-title">{this.props.title}</span>
-
                      <p>{this.props.body}</p>
                      <a href={this.props.url} target="_blank">Github</a>
                    </div>

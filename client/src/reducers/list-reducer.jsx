@@ -5,8 +5,8 @@ const initialState = {
     issueSelected: false,
     issues: [],
     disabled: true,
-    userSelected: '',
-    pommoHistory: [],
+    userSelected: '', //we fill in the empty string with the issue title that is selected
+    pommoHistory: [], //array of all the pom's user has selected / worked on
     loggedIn: false
 };
 

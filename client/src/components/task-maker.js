@@ -39,6 +39,7 @@ export class TaskMaker extends React.Component {
         return (
             <div className="col s12 m7">
                 {taskCard}
+                {/* Want to add functionality to have input reappear when clock reaches 0 */}
                 <div className={this.state.hidden}>
                     <div className="input-field col s6">
                         <input id="input_text" type="text" data-length="15" placeholder="Title" ref={input => {this.textInput = input; }}/>

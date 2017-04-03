@@ -10,6 +10,7 @@ import '../clock.css';
 export class Clock extends React.Component {
 	constructor(props) {
 		super(props);
+		//state is held here so we can use React lifecycle methods to track the clock
 		this.state = {
 			seconds: 5
 		}
@@ -19,7 +20,7 @@ export class Clock extends React.Component {
 		this.stopCountdown();
 	}
 
-
+// ------------------------------------------------------- Clock logic -------------------------------------------------//
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
 			this.onClickHandle();
@@ -33,9 +34,6 @@ export class Clock extends React.Component {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
 			this.props.addPommoHistory();
-			this.props.clearUserSelected();
-
-
 		} else {
 			this.setState({
 				seconds: this.state.seconds - 1
@@ -54,7 +52,7 @@ export class Clock extends React.Component {
     this.setState({seconds: 5});
     clearInterval(this.timerID);
   }
-
+// ------------------------------------------------------- Clock logic -------------------------------------------------//
   onClickHandle () {
 	  this.startCountdown();
   }
@@ -62,13 +60,13 @@ export class Clock extends React.Component {
 		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
 	   onClick={this.props.toggleTimeRunning}>Start the Clock
    </button> : '';
-	  const minutes = Math.floor(this.state.seconds / 60);
+	  const minutes = Math.floor(this.state.seconds / 60); //math to retrieve minutes and seconds
 	  const remSeconds = this.state.seconds % 60;
 	  return (
 		  <div className="col s12 m5">
 			  <div className="card">
 					  <div className="card-content center-align">
-						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span>
+						  <span className="minutes timer flow-text">{(minutes < 10 ? '0' + minutes : minutes)}</span> {/*Teranary operator to add 0's when necessary*/}
 						  <span className="colon timer flow-text"> : </span>
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 					  </div>
@@ -76,7 +74,6 @@ export class Clock extends React.Component {
 						  <button className="waves-effect waves-light btn"
 							  onClick={() => this.setState({seconds: 5})}>Reset
 						  </button>
-
 						  {button}
 					  </div>
 			  </div>
@@ -103,9 +100,6 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	addPommoHistory() {
 		dispatch(actions.pommoHistory())
-	},
-	clearUserSelected() {
-		dispatch(actions.clearUserSelected())
 	},
 	logout() {
 		dispatch(actions.fetchLogout());

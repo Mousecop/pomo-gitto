@@ -24,7 +24,7 @@ export const fetchIssueList = () => dispatch => {
         return dispatch(fetchIssueListSuccess(items));
     })
 }
-
+//Async action for logging in with GitHub
 export const gitLogin = () => {
     const url = 'http://localhost:8080/api/auth/github';
     fetch(url)
@@ -32,7 +32,7 @@ export const gitLogin = () => {
             return response.json();
         })
 }
-
+//Async action for logging out
 export const fetchLogout = () => dispatch => {
     const url = '/api/auth/logout';
     fetch(url)

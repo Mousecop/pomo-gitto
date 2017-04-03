@@ -18,13 +18,10 @@ export class Login extends React.Component {
                       <p>
                           Or simply use the pom clock for other tasks.
                       </p>
-
                     </div>
                     <div className="card-action">
-
-                         <a href="https://pomo-gitto.herokuapp.com/api/auth/github"><button className="waves-effectwaves-light btn" >GitHub</button></a><span>   </span>
-                          <a href="/#/tasks"><button className="waves-effectwaves-light btn">No Git For Me</button></a>
-
+                        <a href="https://pomo-gitto.herokuapp.com/api/auth/github"><button className="waves-effectwaves-light btn" >GitHub</button></a><span>   </span>
+                        <a href="/#/tasks"><button className="waves-effectwaves-light btn">No Git For Me</button></a>
                     </div>
                 </div>
             </div>
