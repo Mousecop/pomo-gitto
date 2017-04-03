@@ -1,6 +1,8 @@
 <h1>PomoGitto</h1>
 <p><a href="https://pomo-gitto.herokuapp.com">PomoGitto</a> is a full-stack app that helps developers see GitHub issues assigned to them and be able to use the Pomodoro technique to work as efficiently as possible.</p>
 
+<img src="client/public/images/pomo-collage.jpg" />
+<img src="client/public/images/pomo-collage2.jpg" />
 
 ## Getting started
 
