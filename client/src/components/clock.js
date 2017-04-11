@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import * as actions from '../actions/action';
-
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
-
 
 export class Clock extends React.Component {
 	constructor(props) {
@@ -14,13 +11,12 @@ export class Clock extends React.Component {
 		this.state = {
 			seconds: 5
 		}
-
 	}
 	componentWillUnmount() {
 		this.stopCountdown();
 	}
 
-// ------------------------------------------------------- Clock logic -------------------------------------------------//
+// ------------------------------------------------------- Clock logic START -------------------------------------------------//
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.isTimeRunning && !this.props.isTimeRunning) {
 			this.onClickHandle();
@@ -52,14 +48,16 @@ export class Clock extends React.Component {
     this.setState({seconds: 5});
     clearInterval(this.timerID);
   }
-// ------------------------------------------------------- Clock logic -------------------------------------------------//
+// ------------------------------------------------------- Clock logic END -------------------------------------------------//
   onClickHandle () {
 	  this.startCountdown();
   }
+
   render() {
 		let button = this.props.userSelected ? <button className="waves-effect waves-light btn right"
-	   onClick={this.props.toggleTimeRunning}>Start the Clock
-   </button> : '';
+	   												   onClick={this.props.toggleTimeRunning}>Start the Clock
+   												</button> 
+											: '';
 	  const minutes = Math.floor(this.state.seconds / 60); //math to retrieve minutes and seconds
 	  const remSeconds = this.state.seconds % 60;
 	  return (
@@ -81,7 +79,6 @@ export class Clock extends React.Component {
 	  );
   }
 }
-
 
 const mapStateToProps = (state, props) => ({
 	isTimeRunning: state.Clock.isTimeRunning,

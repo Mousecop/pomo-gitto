@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/action';
 import '../imports/materialize-css/dist/css/materialize.css';
 
-
 export class Login extends React.Component {
     render () {
         return (
@@ -33,8 +32,6 @@ const mapDispatchToProps = (dispatch) => ({
     gitLogin() {
         dispatch(actions.gitLogin());
     }
-})
-
-
+});
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -1,6 +1,5 @@
 // *** main dependencies *** //
 
-
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
@@ -53,14 +52,12 @@ function runServer(port=3001) {
         mongoose.connect("mongodb://aarongo:pass1234@ds137760.mlab.com:37760/pomo-gitto", err => {
 
             if (err) {
-
                 return(err);
             }
             server = app.listen(port, () => {
                 resolve();
             }).on('error', reject);
         })
-
     });
 }
 

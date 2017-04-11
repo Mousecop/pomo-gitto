@@ -32,11 +32,11 @@ export class Issue extends React.Component {
                      <a href={this.props.url} target="_blank">Github</a>
                    </div>
                    <div className="card-action">
-                       <div className="completed">
-                           {icons}
-                       </div>
-                    <button className="waves-effect waves-light btn" onClick={() => {this.props.selectIssue(this.props.title); this.props.toggleIssueSelected()}}>Pom This Issue</button>
-
+                    <div className="completed">
+                        {icons}
+                    </div>
+                    <button className="waves-effect waves-light btn" onClick={() => {this.props.selectIssue(this.props.title); this.props.toggleIssueSelected()}}>Pom       This Issue
+                    </button>
                    </div>
                 </div>
         )
@@ -60,4 +60,5 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(actions.toggleIssueSelected());
     }
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Issue);
