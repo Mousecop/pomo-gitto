@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/action';
+import Clock from './clock';
 
 import '../imports/materialize-css/dist/css/materialize.css';
 import '../clock.css';
@@ -10,45 +11,66 @@ export class TaskMaker extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            title: '',
-            description: '',
+            tasks: [],
             hidden: ''
         }
         this.handleClick = this.handleClick.bind(this);
-
     }
     handleClick(text, text2) {
-        this.setState({title: text.value, description: text2.value, hidden: 'hidden'})
+        const body = {
+            title: text.value,
+            description: text2.value
+        }
+        if (text.value){
+            this.setState({tasks:[...this.state.tasks, body], hidden: 'hidden'})
+        } else {
+            return null;
+        }
 
+        this.form.reset()
     }
 
 
     render () {
-        let taskCard = this.state.title.length > 5 ?
-                <div className="card blue-grey darken-1 hoverable">
+        const taskCard = this.state.tasks.map((task, index)=> {
+            return(
+                <div className="card blue-grey darken-1 hoverable" key={index}>
                     <div className="card-content white-text">
-                         <span className="card-title">{this.state.title}</span>
-                         <p>{this.state.description}</p>
-                       <div className="card-action">
-                           <button className="waves-effect waves-light btn right"
-                   	   onClick={this.props.toggleTimeRunning}>Start the Clock
-                          </button>
-                       </div>
+                            <span className="card-title">{task.title}</span>
+                            <p>{task.description}</p>
+                        <div className="card-action">
+                            <button className="waves-effect waves-light btn right"
+                        onClick={this.props.toggleTimeRunning}>Start the Clock
+                            </button>
+                        </div>
                     </div>
-                </div> : '';
+                </div>
+            )
+        });
+                
         return (
-            <div className="col s12 m7">
-                {taskCard}
-                {/* Want to add functionality to have input reappear when clock reaches 0 */}
-                <div className={this.state.hidden}>
-                    <div className="input-field col s6">
-                        <input id="input_text" type="text" data-length="15" placeholder="Title" ref={input => {this.textInput = input; }}/>
+            <div>
+                <div className="row">
+                    <Clock/>
+                    <div className="col s12 m7">
+                        <div>
+                            <form ref={ref => this.form = ref}>
+                            <div className="input-field col s6">
+                                <input id="input_text" type="text" data-length="15" placeholder="Title" ref={input => {this.textInput = input; }}/>
+                            </div>
+                            <div className="input-field col s12">
+                                <input id="textarea1" type="text" className="materialize-textarea" data-length="120" placeholder="Description" ref={el => {this.descInput = el;}}/>
+                            </div>
+                            <div className="col s6">
+                                <button className="waves-effect waves-light btn" onClick={() => this.handleClick(this.textInput, this.descInput)}>Pom This Task</button>
+                            </div>
+                            </form>
+                        </div>
                     </div>
-                    <div className="input-field col s12">
-                         <textarea id="textarea1" className="materialize-textarea" data-length="120" placeholder="Description" ref={el => {this.descInput = el;}}></textarea>
-                    </div>
-                    <div className="col s6">
-                        <button className="waves-effect waves-light btn" onClick={() => this.handleClick(this.textInput, this.descInput)}>Pom This Task</button>
+                </div>
+                <div className="row">
+                    <div className="col s12 m5">
+                        {taskCard}
                     </div>
                 </div>
             </div>
