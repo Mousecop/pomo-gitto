@@ -23,6 +23,10 @@
   color: #37474f;
   font-family: 'Russo One', sans-serif;
 }
+.title>a {
+  text-decoration: none;
+  color: #37474f;
+}
 
 .logoutButton {
   margin-right: 15px;
