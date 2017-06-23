@@ -6,10 +6,10 @@ import '../imports/materialize-css/dist/css/materialize.css';
 export class Login extends React.Component {
     render () {
         return (
-            <div className="col s12 m7">
+            <div className="col s12 m12" style={{textAlign: 'center'}}>
                 <div className="card blue-grey darken-1">
-                    <div className="card-content white-text">
-                      <span className="card-title">Tackle Your Issues</span>
+                    <div className="card-content white-text" style={{fontSize: '17px'}}>
+                      <span className="card-title" style={{fontSize: '30px'}}>Tackle Your Issues</span>
                       <p>The Pomodoro Technique is a powerfully simple productivity paradigm that is changing how people work.</p>
                       <p>
                           Login to Github to see all the issues assigned to you and start pomming them away.
