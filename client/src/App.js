@@ -20,7 +20,6 @@ export class App extends Component {
             	<h1 className="title" ><a href="/">PomoGitto</a></h1>
 			</header>
 			<div>
-				{/*<Clock />*/}
 				{this.props.children}
 			</div>
 			<footer className="footer">
