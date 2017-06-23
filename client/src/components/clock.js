@@ -69,10 +69,7 @@ export class Clock extends React.Component {
 						  <span className="seconds timer flow-text">{(remSeconds < 10 ? '0' + remSeconds : remSeconds)}</span>
 					  </div>
 					  <div className="card-action">
-						  <button className="waves-effect waves-light btn"
-							  onClick={() => this.setState({seconds: 5})}>Reset
-						  </button>
-						  {button}
+						{button}
 					  </div>
 			  </div>
 		  </div>
