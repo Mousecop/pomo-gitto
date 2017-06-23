@@ -12,14 +12,15 @@ export class App extends Component {
 		let logoutButton = this.props.loggedIn ?   <button className="waves-effect waves-light btn right logoutButton"
 						  onClick={() => this.props.logout()}>Logout
 					  </button> : '';
+
         return (
         <div className="">
 			<header className='header'>
 				{logoutButton}
-            	<h1 className="title">PomoGitto</h1>
+            	<h1 className="title" ><a href="/">PomoGitto</a></h1>
 			</header>
-			<div className="row">
-				<Clock />
+			<div>
+				{/*<Clock />*/}
 				{this.props.children}
 			</div>
 			<footer className="footer">
