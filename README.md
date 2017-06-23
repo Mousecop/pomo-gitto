@@ -64,7 +64,7 @@ Then open [http://localhost:8080](http://localhost:8080) in a browser.
 <h3>Security</h3>
 <ul>
     <li>Users login using GitHub's <a href="https://developer.github.com/v3/oauth/">OAuth2</a> to keep content secure</li>
-    <li><a href=""http://passportjs.org/">Passport</a> is use to validate users with GitHub, and also control non-authorized users to certain endpoints.</li>
+    <li><a href="http://passportjs.org/">Passport</a> is use to validate users with GitHub, and also control non-authorized users to certain endpoints.</li>
 </ul>
 
 
