@@ -4,10 +4,14 @@
   "description": "Server portion of a full-stack starter template",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build" : "react-scripts build"
   },
   "author": "Joe Turner <jturner@thinkful.com>",
   "license": "MIT",
+  "devDependencies": {
+    "react-scripts": "0.9.0"
+  },
   "dependencies": {
     "body-parser": "^1.17.1",
     "dotenv": "^4.0.0",
