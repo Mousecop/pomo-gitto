@@ -4,8 +4,7 @@
   "description": "Server portion of a full-stack starter template",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "build" : "react-scripts build"
+    "start": "nodemon index.js"
   },
   "author": "Joe Turner <jturner@thinkful.com>",
   "license": "MIT",
