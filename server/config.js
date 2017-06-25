@@ -1,9 +1,9 @@
 
 const githubIds = {
     clientID: 'c7b2c8e37d76f08dcb09',
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    clientSecret: 'df731f1c8dbcdcd5b3f4fc4cb31678f7d2db4a4e',
     callbackURL:'https://pomo-gitto.herokuapp.com/api/auth/github/callback',
-    databaseURL: process.env.DATABASE_URL
+    databaseURL: 'mongodb://localhost/pommo-gitto-dev'
 }
 
 module.exports = githubIds;
