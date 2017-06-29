@@ -7,6 +7,7 @@ export const DISABLE_ISSUE = 'DISABLE_ISSUE';
 export const POMMO_HISTORY = 'POMMO_HISTORY';
 export const TOGGLE_TIME = 'TOGGLE_TIME';
 export const LOGOUT = 'LOGOUT';
+export const TIME_ENDED = 'TIME_ENDED';
 import Cookie from 'react-cookie';
 
 //make fetch request for github API
@@ -70,4 +71,8 @@ export const disableIssue = () => ({
 
 export const pommoHistory = () => ({
     type: POMMO_HISTORY
+})
+
+export const timeEnded = () => ({
+    type: TIME_ENDED
 })
