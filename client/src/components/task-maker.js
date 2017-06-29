@@ -11,8 +11,7 @@ export class TaskMaker extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            tasks: [],
-            hidden: ''
+            tasks: []
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -21,26 +20,28 @@ export class TaskMaker extends React.Component {
             title: text.value,
             description: text2.value
         }
+
         if (text.value){
-            this.setState({tasks:[...this.state.tasks, body], hidden: 'hidden'})
+            this.setState({tasks:[...this.state.tasks, body]})
         } else {
             return null;
         }
-
         this.form.reset()
     }
 
 
     render () {
+        const buttonVisibilty = this.props.isTimeRunning ? 'hidden' : '';
+        const strikeThrough = this.props.timeEnded ? 'line-through' : 'none';
         const taskCard = this.state.tasks.map((task, index)=> {
             return(
                 <div className="card blue-grey darken-1 hoverable" key={index}>
                     <div className="card-content white-text">
-                            <span className="card-title">{task.title}</span>
+                            <span className="card-title" style={{textDecoration: strikeThrough}}>{task.title}</span>
                             <p>{task.description}</p>
                         <div className="card-action">
                             <button className="waves-effect waves-light btn right"
-                        onClick={this.props.toggleTimeRunning}>Start the Clock
+                        onClick={this.props.toggleTimeRunning} style={{visibility: buttonVisibilty}}>Start the Clock
                             </button>
                         </div>
                     </div>
@@ -85,8 +86,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 	addPommoHistory() {
 		dispatch(actions.pommoHistory())
-	},
+	}
+});
 
+const mapStateToProps = (state) => ({
+    timeEnded: state.Clock.timeEnded,
+    isTimeRunning: state.Clock.isTimeRunning
 })
 
-export default connect(null, mapDispatchToProps)(TaskMaker);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskMaker);
