@@ -30,6 +30,7 @@ export class Clock extends React.Component {
 			this.props.toggleTimeRunning();
 			this.stopCountdown();
 			this.props.addPommoHistory();
+			this.props.timedEnded();
 		} else {
 			this.setState({
 				seconds: this.state.seconds - 1
@@ -37,17 +38,17 @@ export class Clock extends React.Component {
 		}
   	}
 
-  startCountdown() {
-     this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
+	startCountdown() {
+		this.timerID = setInterval(
+		() => this.tick(),
+		1000
+		);
+	}
 
-  stopCountdown() {
-    this.setState({seconds: 5});
-    clearInterval(this.timerID);
-  }
+	stopCountdown() {
+		this.setState({seconds: 5});
+		clearInterval(this.timerID);
+	}
 // ------------------------------------------------------- Clock logic END -------------------------------------------------//
   onClickHandle () {
 	  this.startCountdown();
@@ -97,6 +98,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	logout() {
 		dispatch(actions.fetchLogout());
+	},
+	timedEnded() {
+		dispatch(actions.timeEnded());
 	}
 })
 
